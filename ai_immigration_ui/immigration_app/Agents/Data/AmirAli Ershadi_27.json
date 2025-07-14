@@ -1,0 +1,23 @@
+{
+    "name": "AmirAli Ershadi",
+    "age": 27,
+    "Current_country": "Iran",
+    "Reason_for_immigration": "education",
+    "Target_country": "Germany",
+    "Target_job": "N/A",
+    "Experience": "N/A",
+    "Target_education_field": {
+        "field": "Data Science"
+    },
+    "Target_education_degree": "Master",
+    "Target_position": "N/A",
+    "Previous_degrees": {
+        "bachelor": "Biomedical Engineering",
+        "master": "Cognitive Science"
+    },
+    "language_proficiency": "IELTS 7.0",
+    "financial_status": "Stable",
+    "family_ties": "cousin lives there",
+    "health_status": "Healthy",
+    "criminal_record": "None"
+}

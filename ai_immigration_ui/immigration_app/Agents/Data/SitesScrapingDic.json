@@ -1,0 +1,48 @@
+[
+    {
+        "Germany": {
+            "site": "www.daad.de/en/studying-in-germany/universities/all-degree-programmes/",
+            "Order": 1,
+            "field": {
+                "Name": "Data science",
+                "Parameter": "hec-q"
+
+            },
+            "degree":{
+                "Name": "37",
+                "Parameter": "hec-degreeType"
+            },
+            "space": "%20"
+        }
+    },
+    {
+        "Netherlands": {
+            "site": "www.studyinnl.org/dutch-education/studies",
+            "Order": 1,
+            "field": {
+                "Name": "Data science",
+                "Parameter": "studies?fullText"
+            },
+            "degree": {
+                "Name": "Master",
+                "Parameter": "type"
+            },
+            "space": "+"
+        }
+    },
+    {
+        "Canada": {
+            "site": "universitystudy.ca/programs/",
+            "Order": 2,
+            "field": {
+                "Name": "Data science",
+                "Parameter": "search"
+            },
+            "degree": {
+                "Name": "51",
+                "Parameter": "level"
+            },
+            "space": "+"
+        }
+    }
+]
