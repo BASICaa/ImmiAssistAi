@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Pydantic-AI Agent Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="min-h-screen bg-slate-100 p-6">
+    <h1 class="text-3xl font-semibold mb-6">Talk to the Agent</h1>
+
+    <form method="post" id="agentForm" class="space-y-4">
+      {% csrf_token %}
+      <label for="user_msg" class="block font-medium">Your message</label>
+      <textarea name="user_msg" id="user_msg"
+                class="w-full h-28 rounded-lg border border-slate-300 px-4 py-2
+                       focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200"></textarea>
+      <button type="submit"
+              class="px-4 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700">
+        Ask
+      </button>
+    </form>
+
+    <div id="loader" style="display:none;">Loading...</div>
+    <div id="results"></div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const agentForm = document.getElementById('agentForm');
+        const resultsDiv = document.getElementById('results');
+        const loader = document.getElementById('loader');
+        let profileData = {}; // Object to store profile data incrementally
+
+        agentForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            resultsDiv.innerHTML = '';
+            loader.style.display = 'block';
+
+            const formData = new FormData(agentForm);
+            formData.append("agentForm", "1");
+
+            fetch("{% url 'chat_interface' %}", {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                }
+            })
+            .then(response => {
+                if (!response.ok) throw new Error('Network response was not ok');
+                return response.json();
+            })
+            .then(data => {
+                const taskId = data.task_id;
+                pollTaskResult(taskId);
+            })
+            .catch(error => {
+                loader.style.display = 'none';
+                resultsDiv.innerHTML = '<p>Error: ' + error.message + '</p>';
+            });
+        });
+
+        function pollTaskResult(taskId) {
+            const interval = setInterval(() => {
+                fetch(`/task_result/${taskId}/`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.status === 'SUCCESS') {
+                            clearInterval(interval);
+                            loader.style.display = 'none';
+                            displayResults(data.result);
+                        } else if (data.status === 'FAILURE') {
+                            clearInterval(interval);
+                            loader.style.display = 'none';
+                            resultsDiv.innerHTML = '<p>An error occurred.</p>';
+                        }
+                    });
+            }, 3000);
+        }
+
+        function displayResults(result) {
+            if (result.request === 'adding_new_data') {
+                profileData = {}; // Reset data for a new profile
+                fetch("{% url 'profile_creation' %}")
+                    .then(response => response.text())
+                    .then(html => {
+                        resultsDiv.innerHTML = html;
+                        initializeProfileForm();
+                    });
+            } else {
+                let output = `<h3>Request: ${result.request}</h3>`;
+                output += '<pre>' + JSON.stringify(result.outputs_recieved, null, 2) + '</pre>';
+                resultsDiv.innerHTML = output;
+            }
+        }
+
+        function initializeProfileForm() {
+            const formContainer = resultsDiv.querySelector('#formContainer');
+            const formGroups = formContainer.querySelectorAll('.form-group');
+            const nextBtn = resultsDiv.querySelector('#nextBtn');
+            const submitBtn = resultsDiv.querySelector('#submitBtn');
+            const profileForm = resultsDiv.querySelector('#profileForm');
+            let currentFieldIndex = 0;
+
+            if (formGroups.length > 0) {
+                formGroups[currentFieldIndex].style.display = 'block';
+            }
+
+            nextBtn.addEventListener('click', () => {
+                const currentField = formGroups[currentFieldIndex].querySelector('input, select, textarea');
+                if (currentField) {
+                    profileData[currentField.name] = currentField.value;
+                }
+
+                formGroups[currentFieldIndex].style.display = 'none';
+                currentFieldIndex++;
+                if (formGroups[currentFieldIndex]) {
+                    formGroups[currentFieldIndex].style.display = 'block';
+                }
+
+                if (currentFieldIndex >= formGroups.length - 1) {
+                    nextBtn.style.display = 'none';
+                    submitBtn.style.display = 'block';
+                }
+            });
+
+            profileForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Capture the last field's data
+                const lastField = formGroups[formGroups.length - 1].querySelector('input, select, textarea');
+                if (lastField) {
+                    profileData[lastField.name] = lastField.value;
+                }
+
+                loader.style.display = 'block';
+                // Send the collected data as a single JSON object
+                fetch("{% url 'chat_interface' %}", {
+                    method: 'POST',
+                    body: JSON.stringify(profileData),
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    const taskId = data.task_id;
+                    pollTaskResult(taskId);
+                })
+                .catch(error => {
+                    loader.style.display = 'none';
+                    resultsDiv.innerHTML = '<p>Error: ' + error.message + '</p>';
+                });
+            });
+        }
+    });
+    </script>
+  </body>
+</html>

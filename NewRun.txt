@@ -1,0 +1,43 @@
+2025-07-08 222347,710 - immigration_app.Agents.logging_config - INFO - Starting chat task for query I want to add new data
+[2025-07-08 222347,710 INFOMainProcess] Starting chat task for query I want to add new data
+2025-07-08 222347,711 - immigration_app.Agents.logging_config - INFO - Processing user input of type class 'str'
+[2025-07-08 222347,711 INFOMainProcess] Processing user input of type class 'str'
+[2025-07-08 222350,944 INFOMainProcess] HTTP Request POST httpsapi.openai.comv1chatcompletions HTTP1.1 200 OK
+[2025-07-08 222350,978 DEBUGMainProcess] Raw command from agent {
+  Command Add new data,
+  Context None
+}
+[2025-07-08 222350,979 DEBUGMainProcess] Validated Command Command='Add new data' Context='None'
+185350.992 Orchestrator_agent run
+185350.998   chat gpt-4.1
+[2025-07-08 222352,404 INFOMainProcess] HTTP Request POST httpsapi.openai.comv1chatcompletions HTTP1.1 200 OK
+185352.496   running 1 tool
+185352.497     running tool User_AssistantAgent
+[2025-07-08 222352,501 DEBUGMainProcess] [Timestamp] User_AssistantAgent started at 2025-07-08 222352.501308
+[2025-07-08 222352,502 DEBUGMainProcess]
+Debug Starting User_AssistantAgent tool
+[2025-07-08 222352,502 DEBUGMainProcess]
+Debug Processing command Add new data
+[2025-07-08 222352,502 DEBUGMainProcess]
+Debug Processing context None
+[2025-07-08 222352,514 INFOMainProcess] Retrying request to chatcompletions in 0.439505 seconds
+[2025-07-08 222355,533 INFOMainProcess] HTTP Request POST httpsapi.openai.comv1chatcompletions HTTP1.1 200 OK
+[2025-07-08 222358,655 INFOMainProcess] HTTP Request POST httpsapi.openai.comv1chatcompletions HTTP1.1 200 OK
+2025-07-08 222358,692 - immigration_app.Agents.logging_config - INFO - [Timestamp] request_adding_new_data started at 2025-07-08 222358.692490
+[2025-07-08 222358,692 INFOMainProcess] [Timestamp] request_adding_new_data started at 2025-07-08 222358.692490
+[2025-07-08 222358,692 DEBUGMainProcess] adding_new_data completed successfully
+2025-07-08 222358,694 - immigration_app.Agents.logging_config - INFO - [Timestamp] request_adding_new_data ended at 2025-07-08 222358.694001
+[2025-07-08 222358,694 INFOMainProcess] [Timestamp] request_adding_new_data ended at 2025-07-08 222358.694001
+[2025-07-08 222401,518 INFOMainProcess] HTTP Request POST httpsapi.openai.comv1chatcompletions HTTP1.1 200 OK
+[2025-07-08 222401,606 DEBUGMainProcess]
+Debug User_AssistantAgent completed with result request='adding_new_data' outputs_recieved='Please provide the details for the new data you want to add. What is the name, type, and any relevant information about the data'
+[2025-07-08 222401,606 DEBUGMainProcess] [Timestamp] User_AssistantAgent ended at 2025-07-08 222401.606702
+185401.610   chat gpt-4.1
+[2025-07-08 222501,620 INFOMainProcess] Retrying request to chatcompletions in 0.499439 seconds
+[2025-07-08 222505,849 INFOMainProcess] HTTP Request POST httpsapi.openai.comv1chatcompletions HTTP1.1 200 OK
+[2025-07-08 222505,903 DEBUGMainProcess] Raw agent response request='adding_new_data' outputs_recieved='Please provide the details for the new data you want to add. What is the name, type, and any relevant information about the data'
+2025-07-08 222505,905 - immigration_app.Agents.logging_config - INFO - Successfully processed request. Final output request='adding_new_data' outputs_recieved='Please provide the details for the new data you want to add. What is the name, type, and any relevant information about the data'
+[2025-07-08 222505,905 INFOMainProcess] Successfully processed request. Final output request='adding_new_data' outputs_recieved='Please provide the details for the new data you want to add. What is the name, type, and any relevant information about the data'
+2025-07-08 222505,905 - immigration_app.Agents.logging_config - INFO - Task finished for query I want to add new data
+[2025-07-08 222505,905 INFOMainProcess] Task finished for query I want to add new data
+[2025-07-08 222505,908 INFOMainProcess] Task immigration_app.tasks.process_user_query_task[3c3659c1-9b75-45dd-9ec3-72b526f5829e] succeeded in 78.20299999997951s {'request' 'adding_new_data', 'outputs_recieved' 'Please provide the details for the new data you want to add. What is the name, type, and any relevant information about the data'}

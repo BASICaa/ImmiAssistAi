@@ -1,0 +1,38 @@
+2025-07-11 13:20:49,014 - immigration_app.Agents.logging_config - INFO - Starting chat task for query: add new profile
+2025-07-11 13:20:49,014 - immigration_app.Agents.logging_config - INFO - Processing user input of type: <class 'str'>
+2025-07-11 13:20:52,765 - immigration_app.Agents.logging_config - DEBUG - Raw command from agent: {
+  "Command": "add_new_profile",
+  "Context": "None"
+}
+2025-07-11 13:20:52,765 - immigration_app.Agents.logging_config - DEBUG - Validated Command: Command='add_new_profile' Context='None'
+2025-07-11 13:20:54,381 - immigration_app.Agents.logging_config - DEBUG - [Timestamp] User_AssistantAgent started at: 2025-07-11 13:20:54.381472
+2025-07-11 13:20:54,381 - immigration_app.Agents.logging_config - DEBUG - 
+Debug: Starting User_AssistantAgent tool
+2025-07-11 13:20:54,381 - immigration_app.Agents.logging_config - DEBUG - 
+Debug: Processing command: add_new_profile
+2025-07-11 13:20:54,381 - immigration_app.Agents.logging_config - DEBUG - 
+Debug: Processing context: None
+2025-07-11 13:21:02,498 - immigration_app.Agents.logging_config - INFO - [Timestamp] request_adding_new_data started at: 2025-07-11 13:21:02.498329
+2025-07-11 13:21:02,498 - immigration_app.Agents.logging_config - DEBUG - adding_new_data completed successfully
+2025-07-11 13:21:02,498 - immigration_app.Agents.logging_config - INFO - [Timestamp] request_adding_new_data ended at: 2025-07-11 13:21:02.498329
+2025-07-11 13:21:03,642 - immigration_app.Agents.logging_config - DEBUG - 
+Debug: User_AssistantAgent completed with result: request='adding_new_data' outputs_recieved=None
+2025-07-11 13:21:03,645 - immigration_app.Agents.logging_config - DEBUG - [Timestamp] User_AssistantAgent ended at: 2025-07-11 13:21:03.645389
+2025-07-11 13:22:06,547 - immigration_app.Agents.logging_config - DEBUG - Raw agent response: request='adding_new_data' outputs_recieved=None
+2025-07-11 13:22:06,547 - immigration_app.Agents.logging_config - INFO - Successfully processed request. Final output: request='adding_new_data' outputs_recieved=None
+2025-07-11 13:22:06,547 - immigration_app.Agents.logging_config - INFO - Task finished for query: add new profile
+2025-07-11 13:23:31,211 - immigration_app.Agents.logging_config - INFO - Starting form submission task.
+2025-07-11 13:23:31,216 - immigration_app.Agents.logging_config - INFO - Processing user input of type: <class 'str'>
+2025-07-11 13:23:35,781 - immigration_app.Agents.logging_config - DEBUG - Raw command from agent: {
+  "Command": "save_gathered_data",
+  "Context": "None"
+}
+2025-07-11 13:23:35,781 - immigration_app.Agents.logging_config - DEBUG - Validated Command: Command='save_gathered_data' Context='None'
+2025-07-11 13:23:36,896 - immigration_app.Agents.logging_config - DEBUG - [Timestamp] User_AssistantAgent started at: 2025-07-11 13:23:36.896739
+2025-07-11 13:23:36,896 - immigration_app.Agents.logging_config - DEBUG - 
+Debug: Starting User_AssistantAgent tool
+2025-07-11 13:23:36,896 - immigration_app.Agents.logging_config - DEBUG - 
+Debug: Processing command: save_gathered_data
+2025-07-11 13:23:36,896 - immigration_app.Agents.logging_config - DEBUG - 
+Debug: Processing context: None
+2025-07-11 13:23:39,445 - immigration_app.Agents.logging_config - INFO - [Timestamp] save_new_data tool started at: 2025-07-11 13:23:39.445607

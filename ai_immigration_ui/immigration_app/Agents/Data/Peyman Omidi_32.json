@@ -1,0 +1,21 @@
+{
+    "name": "Peyman Omidi",
+    "age": "32",
+    "current_country": "Iran",
+    "reason_for_immigration": "Education",
+    "target_country": "Germany",
+    "target_job": "None",
+    "experience": "3",
+    "target_education_field": "Data science",
+    "previous_degrees": "Bachelor",
+    "target_education_degree": "Master",
+    "target_position": "None",
+    "language_proficiency": {
+        "language": "English",
+        "ielts_score": 7.0
+    },
+    "financial_status": "stable",
+    "family_ties": "cuisine",
+    "health_status": "stable",
+    "criminal_record": "None"
+}
